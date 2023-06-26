@@ -50,6 +50,11 @@
               >
               <ul class="dropdown-menu">
                 <li class="link-box">
+                  <a class="dropdown-links" href="#no_surprises_act"
+                    >No Surprises Act</a
+                  >
+                </li>
+                <li class="link-box">
                   <a class="dropdown-links" href="#risk_sharing_transparency"
                     >Risk Sharing Transparency</a
                   >
@@ -148,7 +153,10 @@
           </div>
 
           <div class="col-lg-6">
-            <div class="product__box">
+            <div
+              class="product__box productsDiv"
+              data-target="no_surprises_act"
+            >
               <img
                 class="img__icon"
                 src="images\NoSurpriseActIcon.svg"
@@ -165,7 +173,10 @@
             </p>
           </div>
           <div class="col-lg-6">
-            <div class="product__box">
+            <div
+              class="product__box productsDiv"
+              data-target="risk_sharing_transparency"
+            >
               <img
                 class="img__icon"
                 src="images\RiskSharingContractManagementIcon.svg"
@@ -187,7 +198,10 @@
             </p>
           </div>
           <div class="col-lg-6">
-            <div class="product__box">
+            <div
+              class="product__box productsDiv"
+              data-target="contract_negotiation"
+            >
               <img
                 class="img__icon"
                 src="images\ContractNegotiationIcon.svg"
@@ -207,7 +221,10 @@
             </p>
           </div>
           <div class="col-lg-6">
-            <div class="product__box">
+            <div
+              class="product__box productsDiv"
+              data-target="proactive_contract_monitoring"
+            >
               <img
                 class="img__icon"
                 src="images\ProactiveContractMonitoringIcon.svg"
@@ -913,12 +930,12 @@
         if (drawer.classList.contains("open")) {
           drawer.classList.remove("open");
           body.classList.remove("open-drawer");
-          overlay.classList.remove("active");
-          body.classList.remove("no-scroll"); // Remove no-scroll class
+          overlay.classList.remove("active-overlay");
+          body.classList.remove("no-scroll");
         } else {
           drawer.classList.add("open");
           body.classList.add("open-drawer");
-          overlay.classList.add("active");
+          overlay.classList.add("active-overlay");
           body.classList.add("no-scroll"); // Add no-scroll class
         }
       }
@@ -959,6 +976,17 @@
             };
             window.scrollTo(scrollOptions);
           });
+        });
+      });
+    </script>
+    <script>
+      var clickableDivs = document.getElementsByClassName("productsDiv");
+
+      Array.from(clickableDivs).forEach(function (div) {
+        div.addEventListener("click", function () {
+          var targetId = div.dataset.target;
+          var targetSection = document.getElementById(targetId);
+          targetSection.scrollIntoView({ behavior: "smooth" });
         });
       });
     </script>
