@@ -923,6 +923,10 @@
       </div>
     </footer>
     <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var sidebar = document.querySelector(".drawer");
+        sidebar.classList.remove("open");
+      });
       function toggleDrawer() {
         var drawer = document.getElementById("drawer");
         var body = document.getElementsByTagName("body")[0];
@@ -930,20 +934,21 @@
         if (drawer.classList.contains("open")) {
           drawer.classList.remove("open");
           body.classList.remove("open-drawer");
-          overlay.classList.remove("active-overlay");
+          overlay.classList.remove("active");
           body.classList.remove("no-scroll");
         } else {
           drawer.classList.add("open");
+          drawer.classList.add("drawer-transition");
           body.classList.add("open-drawer");
-          overlay.classList.add("active-overlay");
-          body.classList.add("no-scroll"); // Add no-scroll class
+          overlay.classList.add("active");
+          body.classList.add("no-scroll");
         }
       }
     </script>
     <script>
       window.addEventListener("scroll", function () {
         var header = document.getElementById("header");
-        var scrollHeight = window.innerHeight * 0.75; // Viewport height
+        var scrollHeight = window.innerHeight * 0.75;
 
         if (window.pageYOffset > scrollHeight) {
           header.classList.add("scrolled");
@@ -953,7 +958,7 @@
       });
       var logo = document.getElementById("logo");
       logo.addEventListener("click", function () {
-        window.scrollTo({ top: 0, behavior: "smooth" }); // Smooth scroll to top
+        window.scrollTo({ top: 0, behavior: "smooth" });
       });
       var moveToTop = document.getElementById("moveToTop");
       moveToTop.addEventListener("click", function () {
